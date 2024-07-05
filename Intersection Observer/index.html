@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intersection Observer</title>
+</head>
+<style>
+
+    *{
+        font-size: xx-large;
+    }
+
+    .card-container{
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 0 10% 0 10%;
+    }
+
+    .cards{
+        height: 200px;
+        width: 400px;
+        border: 2px solid black;
+        margin: 30px;
+        display: grid;
+        place-items: center;
+        position: relative;
+        left: -100px;
+    }
+
+
+    .show{
+        background: red;
+        transform: translateX( 100px);
+        transition: ease-in 1s;
+        color: white;
+    }
+</style>
+<body>
+    <div class="card-container"> 
+        <div class="cards">First Card</div>
+        <div class="cards">Cards</div>
+        <div class="cards">Cards</div>
+        <div class="cards">Cards</div>
+        <div class="cards">Cards</div>
+        <div class="cards">Cards</div>
+        <div class="cards">Cards</div>
+        <div class="cards">Cards</div>
+        <div class="cards">Cards</div>
+        <div class="cards">Last Card</div>
+        
+    </div>
+
+    <script>
+        //Target Element 
+        const cards = document.querySelectorAll('.cards');
+
+        
+        //* ? First Method of Using Intersection Observer API
+
+        
+
+        // Instantiating Intersection Observer API
+        const observer = new IntersectionObserver(/*Place holder ->*/entries => {
+
+            // Iterating through each observed entry  
+            entries.forEach(entry => {
+                entry.target.classList.toggle("show", entry.isIntersecting)
+            }),{
+
+                //Element that is used as view port for checking the visibility of the target element
+               root: document.querySelector('.card-container'),
+
+               //The margin around the " Bounding Box " 
+               //Definition of Bounding Box is to define which area within
+               rootMargin:"0px 0px 0px 0px",
+               threshold: 1.0, 
+            };
+
+        })
+
+        cards.forEach(card => {
+             observer.observe(card)
+        })
+
+    </script>
+</body>
+</html>

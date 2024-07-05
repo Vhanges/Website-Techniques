@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Snap</title>
+</head>
+<style>
+    .scroll-container {
+        max-width: 850px;
+        font-size: 60px;
+        height: 600px;
+        overflow: auto;
+        scroll-snap-type: y mandatory;
+        margin: 0 auto;
+    }
+
+    .scroll-area {
+        scroll-snap-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        height: 600px;
+    }
+
+    .scroll-container > .scroll-area:nth-child(odd) {
+        background-color: blue;
+    }
+
+    .scroll-container > .scroll-area:nth-child(even) {
+        background-color: red;
+    }
+
+
+</style>
+<body>
+    <div class="scroll-container">
+        <div class="scroll-area">1</div>
+        <div class="scroll-area">2</div>
+  
+    </div>
+</body>
+</html>
